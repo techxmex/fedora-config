@@ -13,9 +13,6 @@ sudo dnf install -y \
 sudo cp -f dnf.conf /etc/dnf/
 sudo dnf update -y
 
-# Build-essential.
-#sudo dnf install -y build-essential 
-
 # Microcode for Intel/AMD 
 # sudo dnf install -y amd-microcode
 sudo dnf install -y intel-microcode 
@@ -37,20 +34,17 @@ sudo dnf install -y neofetch htop
 sudo mv .bashrc ~/
 
 # Printing and bluetooth (if needed)
-#sudo dnf install -y cups libcupsimage2
-#sudo dnf install -y bluez blueman
+sudo dnf install -y cups libcupsimage2
+sudo dnf install -y bluez blueman
 
-#sudo systemctl enable bluetooth
-#sudo systemctl enable cups
+sudo systemctl enable bluetooth
+sudo systemctl enable cups
 
 sudo systemctl stop cups-browsed
 sudo systemctl disable cups-browsed
 
 # Command line text editor -- nano preinstalled
 sudo dnf install -y vim mousepad
-
-# Install fonts
-#sudo dnf install fonts-font-awesome fonts-powerline fonts-ubuntu fonts-liberation2 fonts-liberation fonts-terminus
 
 #install icons and theme
 sudo dnf install -y papirus-icon-theme arc-theme
