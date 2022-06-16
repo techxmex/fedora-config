@@ -13,11 +13,6 @@ sudo dnf install -y \
 sudo cp -f dnf.conf /etc/dnf/
 sudo dnf update -y
 
-# xorg display server installation
-sudo dnf install -y sddm
-systemctl enable sddm
-systemctl set-default graphical.target
-
 # Build-essential.
 #sudo dnf install -y build-essential 
 
@@ -26,26 +21,26 @@ systemctl set-default graphical.target
 sudo dnf install -y intel-microcode 
 
 #XFCE packages
-sudo dnf install -y xfce4 xfce4-goodies xfconf
+sudo dnf groupinstall -y "xfce"
 
 # Browser Installation (eg. chromium)
 sudo dnf install -y firefox
 
 # Sound packages (pulseaudio installed prior)
-sudo dnf install -y alsa-utils volumeicon-alsa
+#sudo dnf install -y alsa-utils volumeicon-alsa
 
 # Neofetch/HTOP
 sudo dnf install -y neofetch htop
 
 #copy my bashrc file
-sudo cp -f .bashrc ~/
+sudo mv .bashrc ~/
 
 # Printing and bluetooth (if needed)
-sudo dnf install -y cups libcupsimage2
-sudo dnf install -y bluez blueman
+#sudo dnf install -y cups libcupsimage2
+#sudo dnf install -y bluez blueman
 
-sudo systemctl enable bluetooth
-sudo systemctl enable cups
+#sudo systemctl enable bluetooth
+#sudo systemctl enable cups
 
 sudo systemctl stop cups-browsed
 sudo systemctl disable cups-browsed
@@ -66,12 +61,8 @@ sudo dnf install -y celluloid
 sudo dnf install -y handbrake
 
 #install video codecs
-
-
 sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
-
 sudo dnf install lame\* --exclude=lame-devel
-
 sudo dnf group upgrade --with-optional Multimedia
 
 #install torrent app
@@ -91,11 +82,11 @@ flatpak install flathub com.makemkv.MakeMKV -y
 flatpak install flathub com.github.tchx84.Flatseal -y
 
 # Install LightDM GTK Greeter Settings (lightdm,lightdm-gtk-greeter installs with xfce)
-#sudo dnf install -y lightdm-gtk-greeter-settings slick-greeter
-#sudo cp -f lightdm.conf /etc/lightdm/
-#sudo cp -f slick-greeter.conf /etc/lightdm/
-#sudo cp -f purplegalaxy.jpg /usr/share/backgrounds/
-#sudo systemctl enable lightdm
+sudo dnf install -y lightdm-gtk-greeter-settings slick-greeter
+sudo cp -f lightdm.conf /etc/lightdm/
+sudo cp -f slick-greeter.conf /etc/lightdm/
+sudo cp -f purplegalaxy.jpg /usr/share/backgrounds/
+sudo systemctl enable lightdm
 
 
 sudo dnf autoremove
