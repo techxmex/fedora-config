@@ -3,6 +3,10 @@
 # Default packages are for the configuration and corresponding .config folders
 # Install packages after installing base Debian with no GUI
 
+# Configure DNF
+sudo cp -f dnf.conf /etc/dnf/
+sudo dnf update
+
 # xorg display server installation
 sudo dnf install -y xorg 
 
