@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "exec /usr/bin/xfce4-session" >> ~/.xinitrc
 #script to configure themes
 xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
 xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Dark"
