@@ -47,7 +47,7 @@ sudo systemctl stop cups-browsed
 sudo systemctl disable cups-browsed
 
 # Command line text editor -- nano preinstalled
-sudo dnf install -y vim
+sudo dnf install -y vim mousepad
 
 # Install fonts
 #sudo dnf install fonts-font-awesome fonts-powerline fonts-ubuntu fonts-liberation2 fonts-liberation fonts-terminus
