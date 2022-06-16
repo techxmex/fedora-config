@@ -58,8 +58,17 @@ sudo dnf install -y celluloid
 sudo dnf install -y handbrake
 
 #install video codecs
-sudo dnf install -y libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi libdvdread8 libdvdcss2
-sudo dpkg-reconfigure libdvd-pkg 
+sudo dnf install \
+  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+
+sudo dnf install \
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+
+sudo dnf install lame\* --exclude=lame-devel
+
+sudo dnf group upgrade --with-optional Multimedia
 
 #install torrent app
 sudo dnf install -y transmission-gtk
@@ -70,7 +79,6 @@ sudo gpasswd -a louis libvirt
 sudo gpasswd -a louis libvirt-qemu
 
 #flatpak setup
-sudo dnf install -y flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 #flatpak apps
