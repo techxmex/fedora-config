@@ -15,7 +15,7 @@ sudo dnf update -y
 
 # Microcode for Intel/AMD 
 # sudo dnf install -y amd-microcode
-sudo dnf install -y intel-microcode 
+#sudo dnf install -y intel-microcode 
 
 #XFCE packages
 sudo dnf groupinstall -y "xfce"
@@ -34,7 +34,8 @@ sudo dnf install -y neofetch htop
 #sudo mv .bashrc ~/
 
 # Printing and bluetooth (if needed)
-sudo dnf install -y cups libcupsimage2
+sudo dnf install -y cups 
+#sod dnf install -y libcupsimage2
 sudo dnf install -y bluez blueman
 
 sudo systemctl enable bluetooth
