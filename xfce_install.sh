@@ -31,7 +31,7 @@ sudo dnf install -y firefox
 sudo dnf install -y neofetch htop
 
 #copy my bashrc file
-sudo mv .bashrc ~/
+#sudo mv .bashrc ~/
 
 # Printing and bluetooth (if needed)
 sudo dnf install -y cups libcupsimage2
