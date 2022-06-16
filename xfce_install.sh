@@ -19,7 +19,7 @@ sudo dnf install -y intel-microcode
 
 #XFCE packages
 sudo dnf groupinstall -y "xfce"
-cp .xinitrc ~/
+#echo "exec /usr/bin/xfce4-session" >> ~/.xinitrc
 
 # Browser Installation (eg. chromium)
 sudo dnf install -y firefox
