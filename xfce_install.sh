@@ -4,14 +4,22 @@
 # Install packages after installing base Debian with no GUI
 
 # Configure DNF
+sudo dnf install -y \
+  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+
+sudo dnf install -y \
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  
 sudo cp -f dnf.conf /etc/dnf/
-sudo dnf update
+sudo dnf update -y
 
 # xorg display server installation
-sudo dnf install -y xorg 
+sudo dnf install -y sddm
+systemctl enable sddm
+systemctl set-default graphical.target
 
 # Build-essential.
-sudo dnf install -y build-essential 
+#sudo dnf install -y build-essential 
 
 # Microcode for Intel/AMD 
 # sudo dnf install -y amd-microcode
@@ -46,7 +54,7 @@ sudo systemctl disable cups-browsed
 sudo dnf install -y vim
 
 # Install fonts
-sudo dnf install fonts-font-awesome fonts-powerline fonts-ubuntu fonts-liberation2 fonts-liberation fonts-terminus
+#sudo dnf install fonts-font-awesome fonts-powerline fonts-ubuntu fonts-liberation2 fonts-liberation fonts-terminus
 
 #install icons and theme
 sudo dnf install -y papirus-icon-theme arc-theme
@@ -58,11 +66,7 @@ sudo dnf install -y celluloid
 sudo dnf install -y handbrake
 
 #install video codecs
-sudo dnf install \
-  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 
-sudo dnf install \
-  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 
@@ -82,17 +86,16 @@ sudo gpasswd -a louis libvirt-qemu
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 #flatpak apps
-flatpak install flathub org.mozilla.firefox -y
 flatpak install flathub com.brave.Browser -y
 flatpak install flathub com.makemkv.MakeMKV -y
 flatpak install flathub com.github.tchx84.Flatseal -y
 
 # Install LightDM GTK Greeter Settings (lightdm,lightdm-gtk-greeter installs with xfce)
-sudo dnf install -y lightdm-gtk-greeter-settings slick-greeter
-sudo cp -f lightdm.conf /etc/lightdm/
-sudo cp -f slick-greeter.conf /etc/lightdm/
-sudo cp -f purplegalaxy.jpg /usr/share/backgrounds/
-sudo systemctl enable lightdm
+#sudo dnf install -y lightdm-gtk-greeter-settings slick-greeter
+#sudo cp -f lightdm.conf /etc/lightdm/
+#sudo cp -f slick-greeter.conf /etc/lightdm/
+#sudo cp -f purplegalaxy.jpg /usr/share/backgrounds/
+#sudo systemctl enable lightdm
 
 
 sudo dnf autoremove
