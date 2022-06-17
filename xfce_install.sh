@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Default packages are for the configuration and corresponding .config folders
-# Install packages after installing base Debian with no GUI
+# Install packages after installing Fedora XFCE
 
 # Configure DNF
 sudo dnf install -y \
@@ -13,32 +12,13 @@ sudo dnf install -y \
 sudo cp -f dnf.conf /etc/dnf/
 sudo dnf update -y
 
-# Microcode for Intel/AMD 
-# sudo dnf install -y linux-firmware
-
-#XFCE packages
-sudo dnf groupinstall -y "xfce"
-#echo "exec /usr/bin/xfce4-session" >> ~/.xinitrc
-
 # Browser Installation (eg. chromium)
-sudo dnf install -y firefox
-
-# Sound packages (pulseaudio installed prior)
-#sudo dnf install -y alsa-utils volumeicon-alsa
+sudo dnf install -y netsurf
 
 # Neofetch/HTOP
 sudo dnf install -y neofetch htop
 
-#copy my bashrc file
-#sudo mv .bashrc ~/
-
 # Printing and bluetooth (if needed)
-sudo dnf install -y cups 
-sudo dnf install -y bluez blueman
-
-sudo systemctl enable bluetooth
-sudo systemctl enable cups
-
 sudo systemctl stop cups-browsed
 sudo systemctl disable cups-browsed
 
@@ -80,9 +60,12 @@ sudo dnf install -y lightdm-gtk-greeter-settings slick-greeter
 sudo cp -f lightdm.conf /etc/lightdm/
 sudo cp -f slick-greeter.conf /etc/lightdm/
 sudo cp -f purplegalaxy.jpg /usr/share/backgrounds/
-sudo systemctl enable lightdm
 
-
-sudo dnf autoremove
-
-printf "\e[1;32mTime to reboot! Thanks!\e[0m\n"
+#script to configure themes
+xfconf-query -c xsettings -p /Net/IconThemeName -s "Papirus-Dark"
+xfconf-query -c xsettings -p /Net/ThemeName -s "Arc-Dark"
+xfconf-query -c xfwm4 -p /general/theme -s "Arc-Dark"
+xfconf-query -c xfwm4 -p /general/workspace_count -s "2"
+#set wallpaper, path depends on system
+#xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual-1/workspace0/last-image -s /usr/share/backgrounds/purplegalaxy.jpg
+#xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s /usr/share/backgrounds/purplegalaxy.jpg
