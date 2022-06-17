@@ -57,7 +57,7 @@ sudo dnf install -y handbrake
 #install video codecs
 sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf install -y lame\* --exclude=lame-devel
-sudo dnf group upgrade --with-optional Multimedia
+sudo dnf group upgrade --with-optional Multimedia -y
 
 #install torrent app
 sudo dnf install -y transmission-gtk
